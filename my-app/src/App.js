@@ -10,15 +10,11 @@ export const ChartComponent = props => {
 	useEffect(
 		() => {
 			const {
-				ThemeParams: {
-					bg_color,
-					text_color,
-				}
-			} = window.Telegram ? window.Telegram.WebApp : {
-				ThemeParams: {
-					bg_color: 'white',
-					text_color: 'black',
-				}
+				bg_color,
+				text_color,
+			} = window.Telegram ? window.Telegram.WebApp.themeParams : {
+				bg_color: 'white',
+				text_color: 'black',
 			};
 
 			const handleResize = () => {
