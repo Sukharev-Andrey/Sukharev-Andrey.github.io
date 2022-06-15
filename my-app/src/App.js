@@ -17,6 +17,21 @@ export const ChartComponent = props => {
 				text_color: 'black',
 			};
 
+			if (window.Telegram) {
+				const tg = window.Telegram.WebApp;
+				tg.expand();
+
+				tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+				tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+				tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+				tg.MainButton.show();
+
+				tg.onEvent('mainButtonClicked', function(){
+					tg.sendData("some string that we need to send"); 
+					//при клике на основную кнопку отправляем данные в строковом виде
+				});
+			}
+
 			const handleResize = () => {
 				chart.applyOptions({ 
 					width: chartContainerRef.current.clientWidth,
